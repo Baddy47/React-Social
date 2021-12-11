@@ -1,0 +1,31 @@
+.nav {
+    grid-area: nav;
+    align-self: start;
+
+    position: sticky;
+    top: 90px;
+    
+    border-radius: 12px;
+    margin-left: 10px;
+    background-color: #ffffff;
+}
+
+.item a {
+    color: #8D8D8D;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+    padding: 5px;
+}
+
+.item a:hover {
+    color: #0055FF;
+    font-weight: 600;
+}
+
+.item .active {
+    color: #0066FF;
+}

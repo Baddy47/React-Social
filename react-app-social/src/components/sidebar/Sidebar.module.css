@@ -1,0 +1,25 @@
+.sideBar {
+    grid-area: sidebar;
+    align-self: start;
+
+    position: sticky;
+    top: 90px;
+
+    padding: 20px;
+    margin-right: 10px;
+    border-radius: 12px;
+    background-color: #fff;
+}
+.item {
+    margin-bottom: 20px;
+    color: #8D8D8D;
+    font-size: 20px;
+}
+
+.item:hover {
+    cursor: pointer;
+}
+
+.item.active {
+    text-shadow: 1px 1px 1px #9d9d9d;
+}

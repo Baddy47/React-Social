@@ -1,0 +1,14 @@
+.profileContent {
+    grid-area: avatar;
+
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 5px;
+}
+
+.profileContent img {
+    width: calc(100% - 20px);
+    height: 300px;
+    margin: 10px;
+    border-radius: 10px;
+}

@@ -1,0 +1,7 @@
+.aboutContent {
+    grid-area: about;
+
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 5px;
+}

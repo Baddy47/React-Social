@@ -1,0 +1,55 @@
+.usersContainer {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(6, minmax(auto, 20vh));
+    grid-auto-rows: minmax(1fr, auto);
+    grid-gap: 10px;
+    margin: 20px;
+}
+
+.userCard {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 1px 10px #afafaf;
+    background-color: #ffffff;
+}
+
+.userCard h3 {
+    font-size: 24px;
+    color: #4d4d4d;
+    margin: 0;
+}
+
+.userCard div {
+    margin-bottom: 10px;
+}
+
+.userCard span {
+    margin: 0;
+}
+
+.userCard button {
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    padding: 5px;
+    width: 16vh;
+    background-color: #34A853;
+    cursor: pointer;
+}
+
+.userCard .btnDelete {
+    background-color: #6e6e6e;
+}
+
+.userCard img {
+    width: 20vh;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}

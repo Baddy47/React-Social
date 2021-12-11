@@ -1,0 +1,7 @@
+.postContent {
+    grid-area: somePost;
+
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 5px;
+}
