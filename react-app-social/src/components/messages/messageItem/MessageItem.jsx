@@ -1,5 +1,6 @@
 import * as styles from "../Messages.module.css";
 import React from "react";
+import userPhoto from '../../../accets/User.jpg';
 
 const MessageItem = ({message}) => {
 
@@ -7,7 +8,7 @@ const MessageItem = ({message}) => {
         <div>
             <div className={styles.messageItem}>
                 <div className={styles.messageItemText}>{message}</div>
-                <img src="https://reqres.in/img/faces/8-image.jpg" alt=""/>
+                <img src={userPhoto} alt='Avatar'/>
             </div>
         </div>
     );

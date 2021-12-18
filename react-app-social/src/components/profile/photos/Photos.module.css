@@ -1,7 +1,6 @@
 .photosContent {
-    grid-area: photos;
-
     background-color: #fff;
     border-radius: 12px;
     padding: 5px;
+    margin-bottom: 10px;
 }

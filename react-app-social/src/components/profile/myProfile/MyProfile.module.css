@@ -1,14 +1,16 @@
-.profileContent {
-    display: grid;
-    grid-template-areas: 
-    'avatar avatar'
-    'about createPost'
-    'photos somePost'
-    'events _';
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 2fr;
-    grid-auto-rows: minmax(1fr, auto);
-    grid-gap: 20px;
+.profileWrapper {
+}
 
-    margin: 10px 40px 20px 40px;
+.itemWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.leftItemWrapper {
+    width: 32%;
+    margin-right: 10px;
+}
+
+.rightItemWrapper {
+    width: 42%;
 }

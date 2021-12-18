@@ -1,28 +1,31 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
-import FindUsers from "./FindUsers";
+import FindUsers from "./FindUsersHOC";
 import {connect} from "react-redux";
-import {addUserToFriend_CA, deleteUser_CA, getUsers_AC} from "../../redux/UsersReducer";
+import {
+    addUser,
+    cancelActionUser,
+    deleteUser, setUsers,
+    setTotalCount,
+    setCurrentPage, toggleIsFetching
+} from "../../redux/UsersReducer";
 
 const mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users
+        users: state.usersPage.users,
+        totalCount: state.usersPage.totalUsersCount,
+        pageSize: state.usersPage.pageUsersSize,
+        currentPage: state.usersPage.currentUsersPage,
+        isFetching: state.usersPage.isFetching
     }
 };
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addUser: (userId) => {
-            dispatch(addUserToFriend_CA(userId))
-        },
-        deleteUser: (userId) => {
-            dispatch(deleteUser_CA(userId))
-        },
-        getUsers: (users) => {
-            dispatch(getUsers_AC(users))
-        }
-    }
-}
 
-const FindUsersContainer = connect(mapStateToProps, mapDispatchToProps)(FindUsers);
+const FindUsersContainer = connect(mapStateToProps, {
+    addUser,
+    cancelActionUser,
+    deleteUser, setUsers,
+    setTotalCount,
+    setCurrentPage,
+    toggleIsFetching})(FindUsers);
 
 export default FindUsersContainer;

@@ -1,32 +1,47 @@
 .createPostContent {
-    grid-area: createPost;
-    grid-auto-rows: 50px;
-
     background-color: #fff;
     border-radius: 12px;
     padding: 5px;
+    margin-bottom: 10px;
 }
 .createPostContent h3 {
     margin-left: 20px;
     color: #6e6e6e;
 }
 
+.createPostArea {
+    display: flex;
+}
+
+.createPostAvatar img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 20px;
+}
+
 .createPostArea textarea {
-    outline: none;
-    border: 1px solid #afafaf;
-    border-radius: 8px;
+    outline-color: #F0F2F5;
+    background-color: #F0F2F5;
+    border-radius: 20px;
+    border: transparent;
+    resize: none;
     padding: 10px;
     margin: 5px;
+    width: 40vh;
 }
 
 .createPostButton {
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
 }
 
 .createPostButton button {
     text-transform: uppercase;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
+    width: 25vh;
     border: none;
     border-radius: 8px;
     color: #fff;

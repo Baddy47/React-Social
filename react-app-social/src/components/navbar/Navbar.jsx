@@ -7,9 +7,9 @@ const Navbar = () => {
 
     return <nav className={styles.nav}>
         <ul className={styles.item}>
-            <li><NavLink to='/profile' className={classActive}>Profile</NavLink></li>
+            <li><NavLink to='/profile/my-profile' className={classActive}>Profile</NavLink></li>
             <li><NavLink to='/messages' className={classActive}>Messages</NavLink></li>
-            <li><NavLink to='/findusers' className={classActive}>Find Users</NavLink></li>
+            <li><NavLink to='/find-users' className={classActive}>Find Users</NavLink></li>
             <li><NavLink to='/news' className={classActive}>News</NavLink></li>
             <li><NavLink to='/music' className={classActive}>Music</NavLink></li>
             <li><NavLink to='/settings' className={classActive}>Settings</NavLink></li>

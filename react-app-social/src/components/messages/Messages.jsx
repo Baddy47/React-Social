@@ -13,7 +13,7 @@ const Messages = ({messagePage, onAddMessage, onChangeMessage}) => {
 
     let addMessage = () => {
         onAddMessage();
-        onChangeMessage();
+        onChangeMessage('');
     };
     let changeMessage = (event) => {
         let text = event.target.value;
@@ -31,7 +31,7 @@ const Messages = ({messagePage, onAddMessage, onChangeMessage}) => {
             </div>
 
             <div className={styles.messageWindow}>
-                <div>{ messagesItemElements }</div>
+                <div className={styles.messagesArea}>{ messagesItemElements }</div>
                 <div className={styles.textArea}>
                     <textarea onChange={changeMessage}
                               value={newMessageText}

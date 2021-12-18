@@ -8,8 +8,8 @@ const Post = ({state}) => {
         (<PostMessage message={elem.message} name={elem.name} likeCounts={elem.likeCounts} key={elem.id} />));
 
     return (
-        <div className={styles.postContent}>
-            { postMessageElements }
+        <div className={styles.postWrapper}>
+            <div className={styles.postContent}>{ postMessageElements }</div>
         </div>
     )
 };

@@ -1,14 +1,40 @@
 .profileContent {
-    grid-area: avatar;
-
+    display: flex;
+    flex-direction: column;
     background-color: #fff;
     border-radius: 12px;
     padding: 5px;
+    margin-bottom: 10px;
+    position: relative;
+    height: 60vh;
 }
 
 .profileContent img {
-    width: calc(100% - 20px);
-    height: 300px;
+    width: 100vh;
+    height: 40vh;
     margin: 10px;
     border-radius: 10px;
+    align-self: center;
+}
+
+.profilePhoto {
+    position: absolute;
+    top: 35vh;
+    left: 25vh;
+}
+
+.profilePhoto img {
+    width: 18vh;
+    height: 18vh;
+    border-radius: 100%;
+    border-top: 5px solid #ffffff;
+    border-left: 5px solid #ffffff;
+    border-right: 5px solid #ffffff;
+}
+
+.profileName {
+    align-self: center;
+    font-size: 36px;
+    font-weight: bold;
+    color: #2a2a2a;
 }

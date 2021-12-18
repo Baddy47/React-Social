@@ -17,9 +17,10 @@
 }
 
 .massageSearch input[type=search] {
-    border: 1px solid #f1f0f1;
-    border-radius: 5px;
-    padding: 5px;
+    background-color: #F0F2F5;
+    border-radius: 20px;
+    border: transparent;
+    padding: 10px;
     outline: none;
 }
 
@@ -42,6 +43,8 @@
 }
 
 .messageWindow {
+    position: sticky;
+    height: 88vh;
     border-radius: 12px;
     background-color: #fff;
     padding: 10px 20px 10px 20px;
@@ -50,12 +53,19 @@
     grid-template-rows: 2fr;
 }
 
+.messagesArea {
+    border-bottom: 1px solid #afafaf;
+    align-self: flex-end;
+    overflow-y: auto;
+}
+
 .messageItemText {
     align-self: flex-end;
+    color: #ffffff;
     margin-right: 10px;
-    padding: 5px;
-    border: 1px solid #f1f0f1;
-    border-radius: 10px;
+    padding: 10px;
+    background-color: #0b85f6;
+    border-radius: 10px 0 10px 10px;
 }
 
 .messageItem {
@@ -77,15 +87,18 @@
     justify-self: end;
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
 }
 
 .textArea textarea {
-    outline: none;
-    border: 1px solid #afafaf;
-    border-radius: 8px;
+    outline-color: #F0F2F5;
+    background-color: #F0F2F5;
+    border-radius: 20px;
+    border: transparent;
+    resize: none;
     padding: 10px;
-    margin: 10px;
-    width: 300px;
+    margin-bottom: 10px;
+    width: 40vh;
 }
 
 .textArea button {
