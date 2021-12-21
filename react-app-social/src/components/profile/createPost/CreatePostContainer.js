@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 
 const mapStateToProps = (state) => {
     return {
-        newTextData: state.profilePage.newTextData
+        newTextData: state.profile.newTextData
     }
 };
 

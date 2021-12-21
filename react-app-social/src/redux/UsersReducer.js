@@ -6,21 +6,21 @@ const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 const SET_CURRENT_USERS_PAGE = 'SET-CURRENT-USERS-PAGE';
 const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 
-let initialState = {
+let defaultState = {
     users: [],
-    totalUsersCount: 0,
-    pageUsersSize: 12,
-    currentUsersPage: 1,
+    totalCount: 0,
+    pageSize: 12,
+    currentPage: 1,
     isFetching: false
 }
 
-const usersReducer = (state = initialState, action) => {
+const usersReducer = (state = defaultState, action) => {
     switch (action.type) {
         case ADD_USER_TO_FRIEND:
             return {
                 ...state,
                 users: state.users.map(user => {
-                    if (user.id === action.userId) {
+                    if (user.id === action.payload) {
                         return {...user, followed: true}
                     }
                     return user;
@@ -30,7 +30,7 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 users: state.users.map(user => {
-                    if (user.id === action.userId) {
+                    if (user.id === action.payload) {
                         return {...user, followed: false}
                     }
                     return user;
@@ -39,31 +39,31 @@ const usersReducer = (state = initialState, action) => {
         case SET_USERS: {
             return {
                 ...state,
-                users: [...action.users]
+                users: [...action.payload]
             }
         }
         case SET_TOTAL_USERS_COUNT: {
             return {
                 ...state,
-                totalUsersCount: action.totalCount
+                totalCount: action.payload
             }
         }
         case SET_CURRENT_USERS_PAGE: {
             return {
                 ...state,
-                currentUsersPage: action.currentPage
+                currentPage: action.payload
             }
         }
         case DELETE_USER: {
             return {
                 ...state,
-                users: state.users.filter(user => user.id !== action.userId)
+                users: state.users.filter(user => user.id !== action.payload)
             }
         }
         case TOGGLE_IS_FETCHING: {
             return {
                 ...state,
-                isFetching: action.isFetching
+                isFetching: action.payload
             }
         }
         default:
@@ -71,12 +71,12 @@ const usersReducer = (state = initialState, action) => {
     }
 };
 
-export const addUser = (userId) => ({type: ADD_USER_TO_FRIEND, userId});
-export const cancelActionUser = (userId) => ({type: CANCEL_USER_TO_FRIEND, userId});
-export const deleteUser = (userId) => ({type: DELETE_USER, userId});
-export const setUsers = (users) => ({type: SET_USERS, users});
-export const setTotalCount = (totalCount) => ({type: SET_TOTAL_USERS_COUNT, totalCount});
-export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_USERS_PAGE, currentPage});
-export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
+export const addUser = (userId) => ({type: ADD_USER_TO_FRIEND, payload: userId});
+export const cancelActionUser = (userId) => ({type: CANCEL_USER_TO_FRIEND,payload: userId});
+export const deleteUser = (userId) => ({type: DELETE_USER,payload: userId});
+export const setUsers = (users) => ({type: SET_USERS,payload: users});
+export const setTotalCount = (totalCount) => ({type: SET_TOTAL_USERS_COUNT,payload: totalCount});
+export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_USERS_PAGE,payload: currentPage});
+export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING,payload: isFetching});
 
 export default usersReducer;

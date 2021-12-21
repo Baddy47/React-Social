@@ -1,7 +1,7 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
-let initialState = {
+let defaultState = {
     userData: [
         {id: 1, name: 'Simona'},
         {id: 2, name: 'Anna'},
@@ -15,14 +15,13 @@ let initialState = {
     newTextMessage: ''
 };
 
-const messageReducer = (state = initialState, action) => {
+const messageReducer = (state = defaultState, action) => {
     switch (action.type) {
         case ADD_MESSAGE:
             let newMessage = {
                 id: 5,
                 message: state.newTextMessage
             };
-            //возврат копии state для рендера элемента при изменении
             return {
                 ...state,
                 messageData: [...state.messageData, newMessage]
@@ -30,14 +29,14 @@ const messageReducer = (state = initialState, action) => {
         case UPDATE_NEW_MESSAGE_TEXT:
             return {
                 ...state,
-                newTextMessage: action.newMessage
+                newTextMessage: action.payload
             };
         default:
             return state;
     }
 };
 
-export const addMessageAction = () => ({type: ADD_MESSAGE});
-export const updateNewMessageTextAction = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, newMessage: text});
+export const addMessage = () => ({type: ADD_MESSAGE});
+export const updateMessageText = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, payload: text});
 
 export default messageReducer;

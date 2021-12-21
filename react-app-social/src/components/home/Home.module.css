@@ -1,0 +1,46 @@
+.container {
+    max-width: 70vh;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.slider {
+
+}
+
+.sliderWrapper {
+    overflow: hidden;
+}
+
+.sliderItems {
+    max-width: 18vh;
+    height: 38vh;
+    border-radius: 10px;
+}
+
+.sliderItem {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: 1fr;
+    grid-gap: 10px;
+}
+
+.slider .previous, .slider .next {
+    cursor: pointer;
+    /* Положение элемента задаётся относительно границ браузера: */
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    /* Оформление самих кнопок: */
+    color: grey;
+    font-weight: bold;
+    font-size: 16px;
+    /* Плавное появление фона при наведении курсора: */
+    transition: 0.6s ease;
+    /* Скругление границ: */
+    border-radius: 0 3px 3px 0;
+}

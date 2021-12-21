@@ -2,22 +2,51 @@
     grid-area: header;
     background-color: #ffffff;
     box-shadow: 0 1px 10px #afafaf;
-    
     position: sticky;
     top: 0;
     z-index: 2;
 }
 
+.headerLogoContainer {
+    display: inline-block;
+}
+
+.headerLogoContainerWrapper {
+    display: flex;
+}
+
+.headerWrapper {
+    display: flex;
+}
+
 .header img {
-    width: 8vh;
+    width: 3.7vw;
     margin-left: 5px;
     margin-top: 5px;
 }
 
 .header span {
-    padding-bottom: 10px;
-    font-size: 50px;
+    padding-bottom: 1vh;
+    font-size: 3.1rem;
     font-weight: 800;
     color: #097EEB;
     text-shadow: 2px 2px #8D8D8D;
+}
+
+.headerNavContainer {
+    display: flex;
+    margin-left: auto;
+}
+
+.headerNavContainerLink {
+    display: flex;
+    align-items: center;
+    margin-right: 2vw;
+}
+
+.headerNavContainerLink a {
+    text-decoration: none;
+    color: #0055FF;
+    font-size: 1.6rem;
+    font-weight: bold;
 }

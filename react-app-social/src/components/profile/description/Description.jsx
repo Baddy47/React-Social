@@ -3,7 +3,6 @@ import userPhoto from '../../../accets/User.jpg';
 // eslint-disable-next-line no-unused-vars
 
 const Description = (props) => {
-
     return (
         <div className={styles.profileContent}>
 

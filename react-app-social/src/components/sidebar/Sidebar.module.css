@@ -1,25 +1,35 @@
 .sideBar {
     grid-area: sidebar;
     align-self: start;
-
     position: sticky;
     top: 90px;
-
     padding: 20px;
     margin-right: 10px;
     border-radius: 12px;
     background-color: #fff;
 }
-.item {
+
+.sideBar div {
     margin-bottom: 20px;
+}
+
+.item {
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
     color: #8D8D8D;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .item:hover {
     cursor: pointer;
 }
 
-.item.active {
+.active {
     text-shadow: 1px 1px 1px #9d9d9d;
+    font-size: 24px;
+    color: #0055FF;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
 }

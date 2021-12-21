@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 
 const mapStateToProps = (state) => {
     return {
-        state: state.profilePage.postData,
+        state: state.profile.postData,
     }
 };
 

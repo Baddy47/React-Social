@@ -18,7 +18,7 @@ const UserCard = ({users, dispatch}) => {
         return (
             <div className={styles.userCard}>
                 {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-                <div><NavLink to={'/profile/my-profile/' + users.id}><img src={users.photos.small !== null ? users.photos.small : userPhoto} alt={'photo'}/></NavLink></div>
+                <div><NavLink to={'/profile/' + users.id}><img src={users.photos.large !== null ? users.photos.large : userPhoto} alt={'photo'}/></NavLink></div>
                 <div><h3>{users.name}</h3></div>
                 <div><span>{users.status ? users.status : <span>...</span>}</span></div>
                 <div><button onClick={addFriends}>Add Friends</button></div>
@@ -29,7 +29,7 @@ const UserCard = ({users, dispatch}) => {
         return (
             <div className={styles.userCard}>
                 {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-                <div><img src={users.photos.small !== null ? users.photos.small : userPhoto} alt="photo"/></div>
+                <div><img src={users.photos.large !== null ? users.photos.large : userPhoto} alt="photo"/></div>
                 <div><h3>{users.name}</h3></div>
                 <div><span>Request sent</span></div>
                 <div className={styles.emptyItem}/>
