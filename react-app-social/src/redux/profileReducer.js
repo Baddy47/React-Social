@@ -1,22 +1,22 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
+const SET_USER_STATUS = 'SET-USER-STATUS';
 
 let defaultState = {
-    postData: [
-        {id: 1, name: 'Simona', message: 'This my car.', likeCounts: 55},
-        {id: 2, name: 'Billy', message: 'I found a new job.', likeCounts: 24},
-    ],
+    postData: [],
     newTextData: '',
-    profile: null
+    profileData: null,
+    profileStatus: ''
 };
 
 const profileReducer = (state = defaultState, action) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {
-                id: 4,
-                name: 'Mark',
+                id: action.payload,
+                photo: state.profileData.photos.small,
+                name: state.profileData.fullName,
                 message: state.newTextData,
                 likeCounts: 0
             };
@@ -32,7 +32,13 @@ const profileReducer = (state = defaultState, action) => {
         case SET_USER_PROFILE: {
             return {
                 ...state,
-                profile: action.payload
+                profileData: action.payload
+            }
+        }
+        case SET_USER_STATUS: {
+            return {
+                ...state,
+                profileStatus: action.payload
             }
         }
         default:
@@ -40,8 +46,9 @@ const profileReducer = (state = defaultState, action) => {
     }
 };
 
-export const addPostAction = () => ({type: ADD_POST});
-export const updateNewPostTextAction = (text) => ({type: UPDATE_NEW_POST_TEXT, payload: text});
+export const addPost = (id) => ({type: ADD_POST, payload: id});
+export const updateNewPostText = (text) => ({type: UPDATE_NEW_POST_TEXT, payload: text});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, payload: profile});
+export const setUserStatus = (status) => ({type: SET_USER_STATUS, payload: status});
 
 export default profileReducer;

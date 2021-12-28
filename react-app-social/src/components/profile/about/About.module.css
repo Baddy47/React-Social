@@ -4,3 +4,34 @@
     padding: 5px;
     margin-bottom: 10px;
 }
+
+.aboutContent, .contactsContent h3 {
+    color: #565656;
+}
+
+.aboutContent p {
+    margin: 5px;
+    text-align: center;
+}
+
+.contactsContent {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.contactsContent a {
+    text-decoration: none;
+    color: #4d4d4d;
+    align-self: center;
+}
+
+.contactsContent a:hover {
+    color: #0b85f6;
+}
+
+.contactsContent li {
+    display: flex;
+    margin-left: -10px;
+}

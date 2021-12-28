@@ -3,25 +3,25 @@ import Description from '../description/Description';
 import Photos from '../photos/Photos';
 import styles from './MyProfile.module.css';
 import React from "react";
-import PostContainer from "../post/PostContainer";
-import CreatePostContainer from "../createPost/CreatePostContainer.js";
 import Preloader from "../../../common/preloader/Preloader";
+import CreatePost from "../createPost/CreatePost";
+import Post from "../post/Post";
 
 const MyProfile = (props) => {
-    if (!props.profile) {
+    if (!props.profileData) {
         return <Preloader/>
     }
     return (
         <div className={styles.profileWrapper}>
-            <div><Description profile={props.profile}/></div>
+            <div><Description {...props}/></div>
             <div className={styles.itemWrapper}>
                 <div className={styles.leftItemWrapper}>
-                    <About/>
-                    <Photos/>
+                    <About {...props}/>
+                    <Photos {...props}/>
                 </div>
                 <div className={styles.rightItemWrapper}>
-                    <CreatePostContainer/>
-                    <PostContainer/>
+                    <CreatePost {...props}/>
+                    <Post {...props}/>
                 </div>
             </div>
         </div>

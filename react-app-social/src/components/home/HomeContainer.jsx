@@ -1,13 +1,15 @@
 import React from "react";
 import styles from './Home.module.css';
 import UserCard from "../findUsers/UserCard";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
+import {Navigate} from "react-router-dom";
 
 const HomeContainer = () => {
 
     const usersData = useSelector(state => state.users);
-    const dispatch = useDispatch();
+    const authFlag = useSelector(state => state.authorization.data.authFlag);
 
+    if (authFlag === false) return <Navigate to={'/sign-in'} />;
     return (
         <div>
             <div className={styles.container}>
@@ -16,7 +18,7 @@ const HomeContainer = () => {
                         <div className={styles.sliderItems}>
                             <div className={styles.sliderItem}>
                                 {usersData.users.map(user =>
-                                    (<UserCard users={user} key={user.id} dispatch={dispatch}/>))}
+                                    (<UserCard {...user} key={user.id} />))}
                             </div>
                         </div>
                     </div>

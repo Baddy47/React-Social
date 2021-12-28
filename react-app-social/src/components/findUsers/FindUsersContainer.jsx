@@ -13,7 +13,8 @@ const FindUsersContainer = () => {
 
     useEffect(() => {
         dispatch(toggleIsFetching(true));
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${usersData.pageSize}&page=${usersData.currentPage}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${usersData.pageSize}&page=${usersData.currentPage}`,
+            {withCredentials: true})
             .then(response => {
                 dispatch(setTotalCount(response.data.totalCount));
                 dispatch(toggleIsFetching(false));
@@ -26,32 +27,35 @@ const FindUsersContainer = () => {
     const onChangePage = (pageNumber) => {
         dispatch(toggleIsFetching(true));
         dispatch(setCurrentPage(pageNumber));
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${usersData.pageSize}&page=${pageNumber}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${usersData.pageSize}&page=${pageNumber}`,
+            {withCredentials: true})
             .then(response => {
                 dispatch(toggleIsFetching(false));
                 dispatch(setUsers(response.data.items));
             })
     }
-    let pageCount = Math.ceil((usersData.totalCount / 300) / usersData.pageSize);
+    let pageCount = Math.ceil((usersData.totalCount / 200) / usersData.pageSize);
     let pages = [];
     for (let i = 1; i <= pageCount; i++) {
         pages.push(i);
     }
+
     return (
         <div className={styles.usersWrapper}>
             {usersData.isFetching ? <Preloader/> : null}
             <h2>What if..?</h2>
             <div className={styles.usersContainer}>
                 {usersData.users.map(user =>
-                    (<UserCard users={user} key={user.id} dispatch={dispatch}/>))
+                    (<UserCard {...user} key={user.id}/>))
                 }
             </div>
             <div className={styles.pages}>
                 {pages.map((page, index) => {
                     return (<span onClick={() => {
-                        onChangePage(page)}}
-                        key={index}
-                        className={usersData.currentPage === page ? styles.pageActive : styles.page}>{page}</span>)
+                        onChangePage(page)
+                    }}
+                                  key={index}
+                                  className={usersData.currentPage === page ? styles.pageActive : styles.page}>{page}</span>)
                 })}
             </div>
         </div>

@@ -1,10 +1,13 @@
 import * as styles from './Photos.module.css';
 
-const Photos = () => {
+const Photos = (props) => {
     return (
         
-        <div className={styles.photosContent}>
-            Photos
+        <div>
+            {props.profileData.photos.large && <div className={styles.photosContent}>
+                <h3>Photos</h3>
+                <img src={props.profileData.photos.large} alt="#"/>
+            </div>}
         </div>
     )
 }

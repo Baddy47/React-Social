@@ -2,38 +2,74 @@ import React from "react";
 import styles from './FindUsers.module.css';
 import userPhoto from '../../accets/User.jpg';
 import {NavLink} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {addUser, cancelActionUser, deleteUser} from "../../redux/UsersReducer";
+import axios from "axios";
 
-const UserCard = ({users, dispatch}) => {
-    const addFriends = () => {
-        dispatch.addUser(users.id)
+const UserCard = (props) => {
+
+    const dispatch = useDispatch();
+
+    const setRemove = (userId) => {
+        dispatch(deleteUser(userId))
     };
-    const deleteUsers = () => {
-        dispatch.deleteUser(users.id);
-    }
-    const cancelAction = () => {
-        dispatch.cancelActionUser(users.id)
+    const setFollow = (userId) => {
+        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {},
+            {withCredentials: true,
+                headers: {"API-KEY": "e818d23b-f663-4d13-99fa-12ad23a0a61a"}})
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(addUser(userId));
+                }
+            })
+    };
+    const setUnfollow = (userId) => {
+        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`,
+            {withCredentials: true,
+                headers: {"API-KEY": "e818d23b-f663-4d13-99fa-12ad23a0a61a"}})
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(cancelActionUser(userId));
+                }
+            })
     };
 
-    if (users.followed === false) {
+    if (props.followed === false) {
         return (
             <div className={styles.userCard}>
                 {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-                <div><NavLink to={'/profile/' + users.id}><img src={users.photos.large !== null ? users.photos.large : userPhoto} alt={'photo'}/></NavLink></div>
-                <div><h3>{users.name}</h3></div>
-                <div><span>{users.status ? users.status : <span>...</span>}</span></div>
-                <div><button onClick={addFriends}>Add Friends</button></div>
-                <div><button onClick={deleteUsers} className={styles.btnDelete}>Delete</button></div>
+                <div><NavLink to={'/profile/' + props.id}><img
+                    src={props.photos.large !== null ? props.photos.large : userPhoto} alt={'photo'}/></NavLink></div>
+                <div><h3>{props.name}</h3></div>
+                <div><span>{props.status ? props.status : <span>...</span>}</span></div>
+                <div>
+                    <button onClick={() => {
+                        setFollow(props.id)
+                    }}>Add Friends
+                    </button>
+                </div>
+                <div>
+                    <button onClick={() => {
+                        setRemove(props.id)
+                    }} className={styles.btnDelete}>Delete
+                    </button>
+                </div>
             </div>
         )
-    } else if (users.followed === true) {
+    } else if (props.followed === true) {
         return (
             <div className={styles.userCard}>
                 {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-                <div><img src={users.photos.large !== null ? users.photos.large : userPhoto} alt="photo"/></div>
-                <div><h3>{users.name}</h3></div>
+                <div><img src={props.photos.large !== null ? props.photos.large : userPhoto} alt="photo"/></div>
+                <div><h3>{props.name}</h3></div>
                 <div><span>Request sent</span></div>
                 <div className={styles.emptyItem}/>
-                <div><button onClick={cancelAction} className={styles.btnDelete}>Cancel</button></div>
+                <div>
+                    <button onClick={() => {
+                        setUnfollow(props.id)
+                    }} className={styles.btnDelete}>Cancel
+                    </button>
+                </div>
             </div>
         )
     }

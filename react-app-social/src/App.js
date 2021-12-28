@@ -25,7 +25,7 @@ const App = () => {
 		return (
 			<div className={styles.authorPageContent}>
 				<Routes>
-					<Route path='/sign-in/*' exact={true} element={<Authorization/>}/>
+					<Route path='/sign-in' exact={true} element={<Authorization/>}/>
 				</Routes>
 			</div>
 		)

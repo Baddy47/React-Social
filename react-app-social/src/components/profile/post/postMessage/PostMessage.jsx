@@ -3,12 +3,13 @@ import React from "react";
 import LikeCounts from "../likeCounts/LikeCounts";
 import userPhoto from '../../../../accets/User.jpg';
 
-const PostMessage = ({message, name, likeCounts}) => {
+const PostMessage = ({message, name, likeCounts, photo}) => {
+
     return (
         <div className={styles.messageContent}>
             <div className={styles.item}>
                 <img
-                    src={userPhoto}
+                    src={photo ? photo : userPhoto}
                     alt="Avatar"/>
                 <div>{name}</div>
             </div>

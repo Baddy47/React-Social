@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import MyProfile from "./MyProfile";
-import {setUserProfile} from "../../../redux/profileReducer";
+import {setUserProfile, setUserStatus} from "../../../redux/profileReducer";
 import {useParams} from "react-router-dom";
 
 const MyProfileContainer = () => {
@@ -18,6 +18,10 @@ const MyProfileContainer = () => {
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
             .then(response => {
                 dispatch(setUserProfile(response.data))
+            })
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/status/${userId}`)
+            .then(response => {
+                dispatch(setUserStatus(response.data))
             })
     }, [dispatch, userId]);
 

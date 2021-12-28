@@ -5,7 +5,8 @@ let defaultState = {
     data: {
         id: null,
         login: null,
-        email: null
+        email: null,
+        authFlag: false
     },
     resultCode: null,
     isFetching: false
@@ -20,7 +21,8 @@ const authorizationReducer = (state = defaultState, action) => {
         case CHANGE_RESULT_CODE:
             return {
                 ...state,
-                resultCode: action.payload
+                resultCode: action.payload,
+                authFlag: true
             }
         default:
             return state;

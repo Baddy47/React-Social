@@ -9,9 +9,6 @@
     background-color: #fff;
 }
 
-.sideBar div {
-    margin-bottom: 20px;
-}
 
 .item {
     text-decoration: none;
@@ -23,6 +20,8 @@
 
 .item:hover {
     cursor: pointer;
+    color: #0b85f6;
+    font-weight: 900;
 }
 
 .active {
@@ -32,4 +31,31 @@
     text-decoration: none;
     font-weight: bold;
     text-transform: uppercase;
+}
+
+.friendItem {
+    display: flex;
+    padding: 5px;
+}
+
+.friendsContainer a {
+    text-decoration: none;
+}
+
+.friendItem:hover {
+    background-color: #eeeeee;
+    border-radius: 15px;
+    transition-timing-function: ease-in-out;
+}
+
+.friendItem img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.friendItem span {
+    align-self: center;
+    margin: 0;
+    padding-left: 5px;
+    color: #2a2a2a;
 }

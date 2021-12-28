@@ -1,16 +1,20 @@
 import * as styles from './CreatePost.module.css';
 import React from "react";
 import userPhoto from '../../../accets/User.jpg';
+import {useDispatch} from "react-redux";
+import {addPost, updateNewPostText} from "../../../redux/profileReducer";
 
-const CreatePost = ({newTextData, onAddPost, onChangePost}) => {
+const CreatePost = (props) => {
 
-    const addPost = () => {
-        onAddPost();
-        onChangePost('');
+    const dispatch = useDispatch();
+
+    const onAddPost = () => {
+        dispatch(addPost(props.profileData.userId));
+        dispatch(updateNewPostText(''));
     };
-    const changePost = (event) => {
+    const onChangePost = (event) => {
         let text = event.target.value;
-        onChangePost(text);
+        dispatch(updateNewPostText(text));
     };
 
     return (
@@ -18,14 +22,14 @@ const CreatePost = ({newTextData, onAddPost, onChangePost}) => {
             <h3>Create Posts</h3>
 
             <div className={styles.createPostArea}>
-                <div className={styles.createPostAvatar}><img src={userPhoto} alt="Avatar"/></div>
-                <textarea onChange={changePost}
-                          value={newTextData}
+                <div className={styles.createPostAvatar}><img src={props.profileData.photos.small || userPhoto} alt="Avatar"/></div>
+                <textarea onChange={onChangePost}
+                          value={props.newTextData}
                           placeholder='Create some post.'/>
             </div>
 
             <div className={styles.createPostButton}>
-                <button onClick={addPost}>Publish</button>
+                <button onClick={onAddPost}>Publish</button>
             </div>
         </div>
     )
