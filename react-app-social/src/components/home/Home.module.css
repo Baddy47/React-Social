@@ -1,46 +1,63 @@
 .container {
-    max-width: 70vh;
+    max-width: 44vw;
     margin: 0 auto;
     padding: 20px;
     border-radius: 10px;
     background-color: white;
+    margin-top: 10vh;
 }
 
 .slider {
-
-}
-
-.sliderWrapper {
-    overflow: hidden;
+    position: relative;
 }
 
 .sliderItems {
-    max-width: 18vh;
-    height: 38vh;
+    height: 40vh;
+    min-width: 40vw;
     border-radius: 10px;
+    overflow: hidden;
+    transition-duration: 3s;
+    transition-timing-function: ease-in-out;
 }
 
 .sliderItem {
     display: grid;
-    grid-template-columns: repeat(15, 1fr);
+    grid-template-columns: repeat(12, 1fr);
     grid-template-rows: 1fr;
-    grid-gap: 10px;
+    grid-gap: 0.42vw;
+    min-width: 10vw;
+    transition: translate;
+    transition-property: transform;
+    transition-duration: 2s;
+    transition-timing-function: ease-in-out;
 }
 
-.slider .previous, .slider .next {
+.slider .arrowLeft img {
     cursor: pointer;
-    /* Положение элемента задаётся относительно границ браузера: */
     position: absolute;
     top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    /* Оформление самих кнопок: */
-    color: grey;
-    font-weight: bold;
-    font-size: 16px;
-    /* Плавное появление фона при наведении курсора: */
-    transition: 0.6s ease;
-    /* Скругление границ: */
-    border-radius: 0 3px 3px 0;
+    left: -7.5%;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #868686;
+    border-radius: 100%;
+    background-color: #afafaf;
+    opacity: 0.1;
+}
+
+.slider .arrowRight img {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: -7.5%;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #868686;
+    border-radius: 100%;
+    background-color: #afafaf;
+    opacity: 0.1;
+}
+
+.slider img:hover {
+    opacity: 0.5;
 }

@@ -4,9 +4,13 @@ import * as styles from "./Post.module.css";
 
 const Post = (props) => {
 
-    let postMessageElements = props.postData.map(elem =>
-        (<PostMessage message={elem.message} name={elem.name} likeCounts={elem.likeCounts} key={elem.id}
-                      photo={elem.photo}/>));
+    // eslint-disable-next-line array-callback-return
+    let postMessageElements = props.postData.map((post,index) => {
+        if (post.id === props.profileData.userId) {
+            return <PostMessage message={post.message} name={post.name} likeCounts={post.likeCounts} key={index}
+                                 photo={post.photo}/>
+        }
+    })
 
     return (
         <div className={styles.postWrapper}>

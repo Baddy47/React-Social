@@ -43,7 +43,6 @@
 }
 
 .messageWindow {
-    position: sticky;
     height: 88vh;
     border-radius: 12px;
     background-color: #fff;
@@ -53,10 +52,23 @@
     grid-template-rows: 2fr;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
+.messagesAreaWrapper {
+    overflow: hidden auto;
+    height: 70vh;
+}
+
 .messagesArea {
     border-bottom: 1px solid #afafaf;
-    align-self: flex-end;
-    overflow-y: auto;
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-self: flex-end
 }
 
 .messageItemText {

@@ -1,0 +1,44 @@
+.content {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.videoItems {
+    max-width: 60vw;
+    min-width: 50vw;
+    padding: 50px 0;
+    background-color: white;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.videoItemsWrapper {
+    max-width: 40vw;
+    margin: 0 auto;
+}
+
+.videoItemsContainer {
+    display: grid;
+    gap: 10vh;
+    grid-template-columns: repeat(1, minmax(auto, 40vw));
+}
+
+.item {
+}
+
+.videoItem {
+    position: relative;
+    margin: 0 0 15px 0;
+    aspect-ratio: 16/9;
+}
+
+.videoItem iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

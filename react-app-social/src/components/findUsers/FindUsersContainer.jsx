@@ -11,6 +11,23 @@ const FindUsersContainer = () => {
     const usersData = useSelector(state => state.users);
     const dispatch = useDispatch();
 
+    const onChangePage = (pageNumber) => {
+        dispatch(toggleIsFetching(true));
+        dispatch(setCurrentPage(pageNumber));
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${usersData.pageSize}&page=${pageNumber}`,
+            {withCredentials: true})
+            .then(response => {
+                console.log(response.data.items)
+                dispatch(toggleIsFetching(false));
+                dispatch(setUsers(response.data.items));
+            })
+    }
+    let pageCount = Math.ceil((usersData.totalCount / 200) / usersData.pageSize);
+    let pages = [];
+    for (let i = 1; i <= pageCount; i++) {
+        pages.push(i);
+    }
+
     useEffect(() => {
         dispatch(toggleIsFetching(true));
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${usersData.pageSize}&page=${usersData.currentPage}`,
@@ -24,22 +41,6 @@ const FindUsersContainer = () => {
             })
     }, [dispatch, usersData.currentPage, usersData.pageSize, usersData.users.length]);
 
-    const onChangePage = (pageNumber) => {
-        dispatch(toggleIsFetching(true));
-        dispatch(setCurrentPage(pageNumber));
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${usersData.pageSize}&page=${pageNumber}`,
-            {withCredentials: true})
-            .then(response => {
-                dispatch(toggleIsFetching(false));
-                dispatch(setUsers(response.data.items));
-            })
-    }
-    let pageCount = Math.ceil((usersData.totalCount / 200) / usersData.pageSize);
-    let pages = [];
-    for (let i = 1; i <= pageCount; i++) {
-        pages.push(i);
-    }
-
     return (
         <div className={styles.usersWrapper}>
             {usersData.isFetching ? <Preloader/> : null}
@@ -51,11 +52,11 @@ const FindUsersContainer = () => {
             </div>
             <div className={styles.pages}>
                 {pages.map((page, index) => {
-                    return (<span onClick={() => {
+                    return (<span onClick={() =>
                         onChangePage(page)
-                    }}
-                                  key={index}
-                                  className={usersData.currentPage === page ? styles.pageActive : styles.page}>{page}</span>)
+                    }
+                      key={index}
+                      className={usersData.currentPage === page ? styles.pageActive : styles.page}>{page}</span>)
                 })}
             </div>
         </div>

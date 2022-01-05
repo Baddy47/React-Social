@@ -16,7 +16,7 @@ const UserCard = (props) => {
     const setFollow = (userId) => {
         axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {},
             {withCredentials: true,
-                headers: {"API-KEY": "e818d23b-f663-4d13-99fa-12ad23a0a61a"}})
+                headers: {"API-KEY": "2acfc1b3-60e7-4085-9e02-9cf6596045ef"}})
             .then(response => {
                 if (response.data.resultCode === 0) {
                     dispatch(addUser(userId));
@@ -26,7 +26,7 @@ const UserCard = (props) => {
     const setUnfollow = (userId) => {
         axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`,
             {withCredentials: true,
-                headers: {"API-KEY": "e818d23b-f663-4d13-99fa-12ad23a0a61a"}})
+                headers: {"API-KEY": "2acfc1b3-60e7-4085-9e02-9cf6596045ef"}})
             .then(response => {
                 if (response.data.resultCode === 0) {
                     dispatch(cancelActionUser(userId));
@@ -43,15 +43,15 @@ const UserCard = (props) => {
                 <div><h3>{props.name}</h3></div>
                 <div><span>{props.status ? props.status : <span>...</span>}</span></div>
                 <div>
-                    <button onClick={() => {
+                    <button onClick={() =>
                         setFollow(props.id)
-                    }}>Add Friends
+                    }>Add Friends
                     </button>
                 </div>
                 <div>
-                    <button onClick={() => {
+                    <button onClick={() =>
                         setRemove(props.id)
-                    }} className={styles.btnDelete}>Delete
+                    } className={styles.btnDelete}>Delete
                     </button>
                 </div>
             </div>
@@ -65,9 +65,9 @@ const UserCard = (props) => {
                 <div><span>Request sent</span></div>
                 <div className={styles.emptyItem}/>
                 <div>
-                    <button onClick={() => {
+                    <button onClick={() =>
                         setUnfollow(props.id)
-                    }} className={styles.btnDelete}>Cancel
+                    } className={styles.btnDelete}>Cancel
                     </button>
                 </div>
             </div>

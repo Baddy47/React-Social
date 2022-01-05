@@ -9,19 +9,20 @@ const Authorization = () => {
 
     const dispatch = useDispatch();
     const authorizationData = useSelector(state => state.authorization);
+    const authData = JSON.parse(localStorage.getItem('authData'));
 
     useEffect(() => {
         axios.get('https://social-network.samuraijs.com/api/1.0/auth/me', {withCredentials: true})
             .then(response => {
-                if (response.data.resultCode === 0 ) {
-                    dispatch(setAuthorizationUser(response.data))
-                }
+                if (!authData) {
+                    localStorage.setItem('authData', JSON.stringify(response.data))
+                } else dispatch(setAuthorizationUser(authData))
         })
-    }, [dispatch])
+    }, [authData, dispatch])
 
     return (
         <div className={styles.authContainer}>
-            {authorizationData.resultCode === 0 ? authorizationData.data.login : <NavLink to={'/sign-in'}>Sign In</NavLink>}
+            {authorizationData.resultCode === 0 ? <div>authorizationData.data.login</div> : <NavLink to='/sign-in'>Sign In</NavLink>}
         </div>
     )
 };

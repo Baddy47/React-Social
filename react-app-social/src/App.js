@@ -3,9 +3,9 @@ import styles from './AuthorisationPage.module.css';
 import Header from './components/header/Header';
 import Navbar from './components/navbar/Navbar';
 import Sidebar from './components/sidebar/Sidebar';
-import {Route, Routes} from 'react-router-dom';
+import {Navigate, Route, Routes} from 'react-router-dom';
 import News from "./components/news/News";
-import Music from "./components/music/Music";
+import Videos from "./components/videos/Videos";
 import Settings from "./components/settings/Settings";
 import React from "react";
 import MessagesContainer from "./components/messages/MessagesContainer";
@@ -24,8 +24,9 @@ const App = () => {
 	if (authResp === 1 || authResp === null) {
 		return (
 			<div className={styles.authorPageContent}>
+				<Navigate to='/sign-in'/>
 				<Routes>
-					<Route path='/sign-in' exact={true} element={<Authorization/>}/>
+					<Route path='/sign-in/*' element={<Authorization/>}/>
 				</Routes>
 			</div>
 		)
@@ -37,13 +38,13 @@ const App = () => {
 				<Sidebar/>
 				<div className='appContent'>
 					<Routes>
-						<Route path='/profile' exact={true} element={<MyProfileContainer/>}>
+						<Route exact path='/profile' element={<MyProfileContainer/>}>
 							<Route path=':userId' element={<MyProfileContainer/>}/>
 						</Route>
 						<Route path='/messages/*' element={<MessagesContainer/>}/>
-						<Route path='/news/*' element={<News/>}/>
+						{/*<Route path='/news/*' element={<News/>}/>*/}
 						<Route path='/find-users/*' element={<FindUsersContainer/>}/>
-						<Route path='/music/*' element={<Music/>}/>
+						<Route path='/video/*' element={<Videos/>}/>
 						<Route path='/settings/*' element={<Settings/>}/>
 						<Route path='/home/*' element={<HomeContainer/>}/>
 						<Route path='/friends/*' element={<Friends/>}/>
@@ -75,7 +76,7 @@ const App = () => {
 // 						<Route path='/messages/*' element={<MessagesContainer/>}/>
 // 						<Route path='/news/*' element={<News/>}/>
 // 						<Route path='/find-users/*' element={<FindUsersContainer/>}/>
-// 						<Route path='/music/*' element={<Music/>}/>
+// 						<Route path='/videos/*' element={<Videos/>}/>
 // 						<Route path='/settings/*' element={<Settings/>}/>
 // 						<Route path='/home/*' element={<HomeContainer/>}/>
 // 						<Route path='/friends/*' element={<Friends/>}/>

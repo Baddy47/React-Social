@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
@@ -19,7 +20,7 @@ const messageReducer = (state = defaultState, action) => {
     switch (action.type) {
         case ADD_MESSAGE:
             let newMessage = {
-                id: 5,
+                id: uuidv4(),
                 message: state.newTextMessage
             };
             return {

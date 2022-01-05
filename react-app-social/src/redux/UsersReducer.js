@@ -13,7 +13,6 @@ let defaultState = {
     currentPage: 1,
     isFetching: false
 }
-
 const usersReducer = (state = defaultState, action) => {
     switch (action.type) {
         case ADD_USER_TO_FRIEND:
