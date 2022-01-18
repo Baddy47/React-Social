@@ -4,30 +4,23 @@ import MessageUser from "./messageUser/MesssageUser";
 import MessageItem from "./messageItem/MessageItem";
 import {useDispatch, useSelector} from "react-redux";
 import {addMessage, updateMessageText} from "../../redux/MessageReducer";
+import {useParams} from "react-router-dom";
 
-const MessagesContainer = (callback, deps) => {
+const MessagesContainer = () => {
 
+    let {userChat} = useParams();
     const messagesData = useSelector(state => state.message);
     const getUsersFromState = useSelector(state => state.users)
     const dispatch = useDispatch();
     const scroll = useRef();
 
+
     const [subscribedUsers, setSubscribedUsers] = useState([]);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    // const getSubscribedUsers = () => {
-    //     // !!!для получения подписанных пользователей с сервера!!!
-    //     // axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=12?page=1`)
-    //     //     .then((response) => {
-    //     //         console.log(response.data.items)
-    //     //         if (subscribedUsers.length === 0)
-    //     //         setSubscribedUsers(response.data.items)
-    //     //     })
-    // };
-
     useEffect(() => {
         setSubscribedUsers(getUsersFromState.users.filter(user => user.followed === true))
     }, [getUsersFromState.users]);
+
+
     const [searchValue, setSearchValue] = useState('');
     const filterSearchName = subscribedUsers.filter(user => {
         return user.name.toLowerCase().includes(searchValue.toLowerCase())
@@ -35,22 +28,40 @@ const MessagesContainer = (callback, deps) => {
 
     let messagesUserElements = filterSearchName.map((user, index) => {
         return (
-            <MessageUser name={user.name} id={user.id} key={index} />
+            <MessageUser name={user.name} id={user.id} photos={user.photos} key={index}/>
         )
     });
+
     let messagesItemElements = messagesData.messageData.map(elem =>
-        (<MessageItem message={elem.message} key={elem.id} />));
+        (<MessageItem idChat={elem.idChat} userChat={userChat} message={elem.message} key={elem.id} id={elem.id}/>));
     let newMessageText = messagesData.newTextMessage;
 
+    let messageItemChooseUser = getUsersFromState.users.filter(item => item.id === +userChat)
+    let messagesChooseUserElements = messageItemChooseUser.map((user, index) => {
+        return (
+            <MessageUser name={user.name} photos={user.photos} key={index}/>
+        )
+    });
+
     const onAddMessage = useCallback(() => {
-        dispatch(addMessage());
+        dispatch(addMessage(userChat));
         scroll.current.scrollTo(0, 15000);
         dispatch(updateMessageText(''));
-    }, [dispatch]);
+    }, [dispatch, userChat]);
+
     let changeMessage = (event) => {
         let text = event.target.value;
         dispatch(updateMessageText(text));
     };
+
+    const changeMessageKey = (event) => {
+        if (event.code === 'Enter') {
+            dispatch(addMessage(userChat));
+            scroll.current.scrollTo(0, 15000);
+            dispatch(updateMessageText(''));
+        }
+    }
+
     const changeWheelPosition = () => {
         let el = scroll.current;
         window.scrollTo(0, el.scrollHeight + el.lastChild.clientHeight)
@@ -65,20 +76,22 @@ const MessagesContainer = (callback, deps) => {
                            placeholder='Search'
                            onChange={(event) => setSearchValue(event.target.value)}/>
                 </form>
-                <div>{ messagesUserElements }</div>
+                <div>{messagesUserElements}</div>
             </div>
-
-            <div className={styles.messageWindow}>
-                <div ref={scroll} className={styles.messagesAreaWrapper}>
-                    <div onWheel={changeWheelPosition} className={styles.messagesArea}>{ messagesItemElements }</div>
-                </div>
-                <div className={styles.textArea}>
-                    <textarea onChange={(event) => changeMessage(event)}
+            {userChat
+            ? <div className={styles.messageWindow}>
+                    <div className={styles.messagesUsers}>{messagesChooseUserElements}</div>
+                    <div ref={scroll} className={styles.messagesAreaWrapper}>
+                        <div onWheel={changeWheelPosition} className={styles.messagesArea}>{messagesItemElements}</div>
+                    </div>
+                    <div className={styles.textArea}>
+                    <textarea onKeyUp={changeMessageKey} onChange={(event) => changeMessage(event)}
                               value={newMessageText}
                               placeholder="Some text"/>
-                    <button onClick={onAddMessage}>Send</button>
+                        <button onClick={onAddMessage}>Send</button>
+                    </div>
                 </div>
-            </div>
+            : <></>}
 
         </div>
     )

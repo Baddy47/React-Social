@@ -2,8 +2,15 @@ import * as styles from './PostMessage.module.css';
 import React from "react";
 import LikeCounts from "../likeCounts/LikeCounts";
 import userPhoto from '../../../../accets/User.jpg';
+import {useDispatch} from "react-redux";
+import {deletePost} from "../../../../redux/profileReducer";
 
-const PostMessage = ({message, name, likeCounts, photo}) => {
+const PostMessage = ({message, name, photo, id, likeCounts}) => {
+
+    const dispatch = useDispatch();
+    const delPost = (userId) => {
+        dispatch(deletePost(userId))
+    }
 
     return (
         <div className={styles.messageContent}>
@@ -15,6 +22,9 @@ const PostMessage = ({message, name, likeCounts, photo}) => {
             </div>
             <div className={styles.itemText}>{message}</div>
             <div><LikeCounts likeCounts={likeCounts} text='Like'/></div>
+            <div className={styles.messageContentBtn}>
+                <button onClick={() => delPost(id)}>Delete</button>
+            </div>
         </div>
     )
 }

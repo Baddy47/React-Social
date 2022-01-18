@@ -13,9 +13,12 @@ const UserCard = (props) => {
     const setRemove = (userId) => {
         dispatch(deleteUser(userId))
     };
+
     const setFollow = (userId) => {
-        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {},
-            {withCredentials: true,
+        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`,
+            {},
+            {
+                withCredentials: true,
                 headers: {"API-KEY": "2acfc1b3-60e7-4085-9e02-9cf6596045ef"}})
             .then(response => {
                 if (response.data.resultCode === 0) {
@@ -25,7 +28,8 @@ const UserCard = (props) => {
     };
     const setUnfollow = (userId) => {
         axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`,
-            {withCredentials: true,
+            {
+                withCredentials: true,
                 headers: {"API-KEY": "2acfc1b3-60e7-4085-9e02-9cf6596045ef"}})
             .then(response => {
                 if (response.data.resultCode === 0) {
@@ -37,9 +41,9 @@ const UserCard = (props) => {
     if (props.followed === false) {
         return (
             <div className={styles.userCard}>
-                {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-                <div><NavLink to={'/profile/' + props.id}><img
-                    src={props.photos.large !== null ? props.photos.large : userPhoto} alt={'photo'}/></NavLink></div>
+                <div><NavLink to={'/profile/' + props.id}>
+                    <img src={props.photos.large !== null ? props.photos.large : userPhoto} alt={''}/>
+                </NavLink></div>
                 <div><h3>{props.name}</h3></div>
                 <div><span>{props.status ? props.status : <span>...</span>}</span></div>
                 <div>
@@ -59,8 +63,9 @@ const UserCard = (props) => {
     } else if (props.followed === true) {
         return (
             <div className={styles.userCard}>
-                {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-                <div><img src={props.photos.large !== null ? props.photos.large : userPhoto} alt="photo"/></div>
+                <div>
+                    <img src={props.photos.large !== null ? props.photos.large : userPhoto} alt={""}/>
+                </div>
                 <div><h3>{props.name}</h3></div>
                 <div><span>Request sent</span></div>
                 <div className={styles.emptyItem}/>

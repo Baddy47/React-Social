@@ -2,13 +2,14 @@
     grid-area: sidebar;
     align-self: start;
     position: sticky;
-    top: 90px;
+    top: 8vh;
     padding: 20px;
     margin-right: 10px;
     border-radius: 12px;
     background-color: #fff;
 }
 
+.items {}
 
 .item {
     text-decoration: none;
@@ -37,6 +38,28 @@
     display: flex;
     padding: 5px;
 }
+@media all and (max-width: 1024px){
+    .friendItem {
+        flex-direction: column;
+        padding: 0;
+        margin-bottom: 10px;
+    }
+    .friendItem span {
+        align-self: start;
+    }
+    .sideBar {
+        margin-right: 0;
+        margin-left: 10px;
+        margin-top: 30px;
+        position: sticky;
+    }
+    .friendsContainer {
+        margin: 10px 0;
+        border: 1px solid rgba(175, 175, 175, 0.47);
+        border-radius: 15px;
+        padding: 5px;
+    }
+}
 
 .friendsContainer a {
     text-decoration: none;
@@ -58,4 +81,53 @@
     margin: 0;
     padding-left: 5px;
     color: #2a2a2a;
+}
+@media all and (max-width: 768px){
+    .sideBar {
+        display: none;
+    }
+    .sideBarBurger {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position: fixed;
+        top: 4.7vh;
+        right: 0;
+        z-index: 3;
+        height: 100%;
+        width: 50%;
+        background-color: rgba(255, 255, 255, 0.67);
+        border-radius: 0;
+        margin: 0;
+    }
+    .item {
+        color: #505050;
+        font-size: 32px;
+    }
+    .items {
+        margin-bottom: 30px;
+    }
+    .active {
+        font-size: 32px;
+    }
+    .friendsContainer {
+        background-color: white;
+        padding: 10px;
+    }
+}
+
+@media all and (max-width: 1440px) {
+    .sideBar {
+        margin-top: 5%;
+    }
+}
+@media all and (max-width: 425px){
+    .sideBarBurger {
+        top: 5.5%;
+    }
+}
+@media all and (max-width: 375px){
+    .sideBarBurger {
+        top: 5.2%;
+    }
 }

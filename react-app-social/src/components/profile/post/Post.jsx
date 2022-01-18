@@ -7,8 +7,9 @@ const Post = (props) => {
     // eslint-disable-next-line array-callback-return
     let postMessageElements = props.postData.map((post,index) => {
         if (post.id === props.profileData.userId) {
-            return <PostMessage message={post.message} name={post.name} likeCounts={post.likeCounts} key={index}
-                                 photo={post.photo}/>
+            return <PostMessage message={post.message} name={post.name} id={post.id}
+                                key={index} likeCounts={post.likeCounts}
+                                photo={post.photo}/>
         }
     })
 

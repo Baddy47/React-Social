@@ -1,3 +1,7 @@
+.likeCountsContainer {
+
+}
+
 .likeCounts {
     width: 30px;
     height: 20px;
@@ -5,9 +9,11 @@
     padding: 5px;
     background-color: darkred;
     color: floralwhite;
+    margin-left: 15px;
 }
 
-span {
+.likeCountsBtn {
     color:grey;
     margin-left: 10px;
+    cursor: pointer;
 }

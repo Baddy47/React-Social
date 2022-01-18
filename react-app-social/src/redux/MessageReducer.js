@@ -3,16 +3,8 @@ const ADD_MESSAGE = 'ADD-MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 let defaultState = {
-    userData: [
-        {id: 1, name: 'Simona'},
-        {id: 2, name: 'Anna'},
-        {id: 3, name: 'Mila'},
-        {id: 4, name: 'Billy'}
-    ],
-    messageData: [
-        {id: 1, message: 'Hi, what you name?'},
-        {id: 2, message: 'My name is Anna'}
-    ],
+    userData: [],
+    messageData: [],
     newTextMessage: ''
 };
 
@@ -21,6 +13,7 @@ const messageReducer = (state = defaultState, action) => {
         case ADD_MESSAGE:
             let newMessage = {
                 id: uuidv4(),
+                idChat: action.payload,
                 message: state.newTextMessage
             };
             return {
@@ -37,7 +30,7 @@ const messageReducer = (state = defaultState, action) => {
     }
 };
 
-export const addMessage = () => ({type: ADD_MESSAGE});
+export const addMessage = (idChat) => ({type: ADD_MESSAGE, payload: idChat});
 export const updateMessageText = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, payload: text});
 
 export default messageReducer;

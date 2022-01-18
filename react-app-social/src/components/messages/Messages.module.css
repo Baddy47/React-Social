@@ -1,7 +1,16 @@
 .messages {
     display: grid;
-    grid-template-columns: 2fr 10fr;
-    grid-gap: 10px;
+    grid-template-columns: 3fr 10fr;
+    grid-gap: 5vw;
+    margin-left: 4vw;
+    margin-right: 1vw;
+}
+@media all and (max-width: 1024px){
+    .messages {
+        margin-left: 3vw;
+        margin-right: 1.5vw;
+        margin-top: .6vh;
+    }
 }
 
 .messagesUsers {
@@ -34,7 +43,7 @@
 .messagesUsers a {
     text-decoration: none;
     color: #4d4d4d;
-    font-size: 26px;
+    font-size: 1.6rem;
     padding-left: 10px;
 }
 
@@ -58,7 +67,7 @@
 
 .messagesAreaWrapper {
     overflow: hidden auto;
-    height: 70vh;
+    height: 100%;
 }
 
 .messagesArea {
@@ -84,6 +93,12 @@
     padding: 10px 0 10px 0;
     display: flex;
     justify-content: flex-end;
+}
+
+.messageItemEmpty {
+    text-align: center;
+    padding: 5px;
+    font-size: 1.8rem;
 }
 
 .messageItem img {

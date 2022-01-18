@@ -1,9 +1,72 @@
-.authContainer {
-
+.authorPageContent {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    max-width: 30%;
+    max-height: 100%;
+    background-color: white;
+    margin-top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
 }
 
-.authContainer a {
-    text-decoration: none;
-    font-size: 1.6rem;
-    color: #0b85f6;
+.authContainer h3 {
+    text-align: center;
+    margin-bottom: 20%;
+}
+
+.authItemForm {
+    margin: 0 0 15% 0;
+    display: flex;
+}
+
+.authItemForm label {
+    font-size: 12px;
+    align-self: center;
+}
+
+.InputItem {
+    padding: 5px;
+    border: 1px solid #afafaf;
+    border-radius: 5px;
+    outline-color: rgba(11, 133, 246, 0.65);
+}
+
+.checkItem {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #2a2a2a;
+}
+
+.submitItem {
+    align-self: center;
+    margin: 0 auto;
+    width: 100%;
+    background-color: #0b85f6;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+}
+@media all and (max-width: 768px){
+    .authorPageContent {
+        max-width: 35%;
+    }
+}
+@media all and (max-width: 425px){
+    .authorPageContent {
+        max-width: 50%;
+    }
+}
+@media all and (min-width: 320px) and (max-width: 425px){
+    .authorPageContent {
+        max-width: 55%;
+    }
+}
+@media all and (max-width: 320px){
+    .authorPageContent {
+        max-width: 65%;
+    }
 }

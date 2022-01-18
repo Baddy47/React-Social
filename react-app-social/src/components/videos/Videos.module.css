@@ -25,6 +25,17 @@
     gap: 10vh;
     grid-template-columns: repeat(1, minmax(auto, 40vw));
 }
+@media all and (min-width: 1025px) and (max-width: 1440px){
+    .videoItems {
+        max-width: 90%;
+    }
+}
+@media all and (max-width: 1024px){
+    .videoItems {
+        max-width: 70vw;
+        min-width: 70vw;
+    }
+}
 
 .item {
 }

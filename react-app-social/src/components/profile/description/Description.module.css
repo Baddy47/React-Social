@@ -9,23 +9,76 @@
     height: 60vh;
 }
 
-.profileContent img {
-    width: 100vh;
+.profilePhotoItem {
+    position: relative;
+}
+
+.profilePhotoItem img {
+    width: 100%;
     height: 40vh;
-    margin: 10px;
-    border-radius: 10px;
+    padding: 10px;
+    border-radius: 12px;
     align-self: center;
 }
 
 .profilePhoto {
+    width: 20%;
     position: absolute;
-    top: 35vh;
+    top: 32vh;
     left: 25vh;
+}
+@media all and (min-width: 1981px) and (max-width: 2560px) {
+    .profilePhoto {
+        left: 18%;
+        width: 14%;
+    }
+    .profilePhotoItem img {
+        padding: 0;
+    }
+    .profileContent {
+        max-width: 52vw;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+}
+@media all and (min-width: 1441px) and (max-width: 1980px) {
+    .profilePhoto {
+        left: 16vh;
+        width: 18%;
+    }
+    .profilePhotoItem img {
+        padding: 0;
+    }
+}
+@media all and (min-width: 1025px) and (max-width: 1440px) {
+    .profilePhotoItem img {
+        padding: 0;
+    }
+    .profilePhoto {
+        left: 12%;
+    }
+    .profileName {
+        margin-left: 8%;
+    }
+}
+@media all and (min-width: 769px) and (max-width: 1024px) {
+    .profilePhotoItem img {
+        width: 100%;
+        padding: 0;
+    }
+    .profilePhoto {
+        left: 12%;
+        width: 25%;
+    }
+    .profileName, .profileStatus {
+        margin-left: 40%;
+    }
 }
 
 .profilePhoto img {
-    width: 18vh;
-    height: 18vh;
+    width: 100%;
+    height: 100%;
+    padding: 0;
     border-radius: 100%;
     border-top: 5px solid #ffffff;
     border-left: 5px solid #ffffff;
@@ -44,4 +97,59 @@
     font-size: 1.3rem;
     color: #757474;
     margin-top: 2vh;
+    cursor: pointer;
+}
+
+.profileStatusForm {
+    width:100px;
+}
+
+.profileStatus input {
+    border: none;
+    background-color: #d5d4d4;
+    border-radius: 10px;
+    color: #868686;
+    padding: 7%;
+    outline: none;
+    margin-bottom: 5px;
+}
+
+.profileStatusBtnSubmit[type="submit"] {
+    cursor: pointer;
+    color: white;
+    background: #34A853;
+}
+
+@media all and (max-width: 768px) {
+    .profilePhotoItem img {
+        padding: 0;
+    }
+    .profilePhoto {
+        left: 10%;
+        width: 25%;
+    }
+    .profileName, .profileStatus {
+        margin-left: 30%;
+    }
+}
+@media all and (max-width: 425px) {
+    .profileName {
+        font-size: 30px;
+    }
+}
+@media all and (max-width: 375px) {
+    .profileName {
+        font-size: 28px;
+    }
+}
+@media all and (max-width: 320px) {
+    .profileName {
+        font-size: 28px;
+    }
+}
+@media all and (max-width: 320px) and  (max-height: 568px){
+    .profileName {
+        font-size: 24px;
+        margin-left: 35%;
+    }
 }

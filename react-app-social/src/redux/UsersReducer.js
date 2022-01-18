@@ -9,7 +9,7 @@ const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 let defaultState = {
     users: [],
     totalCount: 0,
-    pageSize: 12,
+    pageSize: 10,
     currentPage: 1,
     isFetching: false
 }

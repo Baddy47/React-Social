@@ -5,6 +5,7 @@
     position: sticky;
     top: 0;
     z-index: 2;
+    padding-bottom: .5vh;
 }
 
 .headerLogoContainer {
@@ -13,24 +14,41 @@
 
 .headerLogoContainerWrapper {
     display: flex;
+    align-items: center;
 }
 
 .headerWrapper {
     display: flex;
+    height: 100%;
 }
 
 .header img {
-    width: 3.7vw;
+    width: 4vw;
     margin-left: 5px;
     margin-top: 5px;
 }
 
 .header span {
-    padding-bottom: 1vh;
     font-size: 3.1rem;
     font-weight: 800;
     color: #097EEB;
     text-shadow: 2px 2px #8D8D8D;
+    margin: 0;
+}
+
+.headerBurger {
+    margin-left: 10%;
+    display: none;
+    cursor: pointer;
+}
+@media all and (max-width: 768px){
+    .headerBurger {
+        display: block;
+    }
+}
+
+.headerBurger a {
+    display: inline-block;
 }
 
 .headerNavContainer {
@@ -40,13 +58,114 @@
 
 .headerNavContainerLink {
     display: flex;
+    justify-content: center;
     align-items: center;
-    margin-right: 2vw;
+    padding: 1.2vw;
 }
 
 .headerNavContainerLink a {
     text-decoration: none;
     color: #0055FF;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: bold;
+}
+
+.headerLogin {
+    color: #2a2a2a;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+}
+  /*Media Request*/
+
+@media all and (max-width: 1980px){
+    .header img {
+        width: 5vw;
+    }
+    .header span {
+        font-size: 2.9rem;
+    }
+    .headerNavContainerLink {
+        padding: 1vw;
+    }
+}
+@media all and (max-width: 1440px){
+    .header span {
+        font-size: 2.5rem;
+    }
+    .headerNavContainerLink {
+        padding: 1vw;
+    }
+    .headerNavContainerLink a {
+        font-size: 1.2rem;
+    }
+}
+@media all and (max-width: 1024px){
+    .header img {
+        width: 6vw;
+    }
+    .header span {
+        font-size: 2.2rem;
+    }
+    .headerNavContainerLink {
+        padding: 1.5vw;
+    }
+}
+@media all and (max-width: 768px){
+    .header img {
+        width: 8vw;
+    }
+    .header span {
+        font-size: 2rem;
+    }
+    .headerNavContainerLink {
+        padding: 2vw;
+    }
+    .headerNavContainerLink a {
+        font-size: 1rem;
+    }
+}
+@media all and (max-width: 425px){
+    .header img {
+        width: 13vw;
+    }
+    .headerLogoContainer span {
+        font-size: 2.4rem;
+    }
+    .headerBurger {
+        margin-left: 5%;
+    }
+}
+@media all and (max-width: 375px){
+    .header img {
+        width: 16vw;
+    }
+}
+@media all and (max-width: 375px){
+    .header {
+        padding: 0;
+    }
+    .headerWrapper {
+        flex-wrap: wrap;
+    }
+    .headerBurger {
+        margin-left: 7%;
+    }
+    .header img {
+        height: 20%;
+    }
+    .headerLogoContainerWrapper img {
+        display: none;
+    }
+    .headerLogoContainerWrapper span {
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+    .headerLogoContainer span {
+        font-size: 2rem;
+    }
+    .headerNavContainer {
+        align-self: flex-end;
+        margin: 0 auto;
+    }
 }

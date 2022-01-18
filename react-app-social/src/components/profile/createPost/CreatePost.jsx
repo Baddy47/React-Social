@@ -12,6 +12,12 @@ const CreatePost = (props) => {
         dispatch(addPost(props.profileData.userId));
         dispatch(updateNewPostText(''));
     };
+    const onAddPostKey = (event) => {
+        if (event.code === 'Enter') {
+            dispatch(addPost(props.profileData.userId));
+            dispatch(updateNewPostText(''));
+        }
+    }
     const onChangePost = (event) => {
         let text = event.target.value;
         dispatch(updateNewPostText(text));
@@ -23,7 +29,7 @@ const CreatePost = (props) => {
 
             <div className={styles.createPostArea}>
                 <div className={styles.createPostAvatar}><img src={props.profileData.photos.small || userPhoto} alt="Avatar"/></div>
-                <textarea onChange={onChangePost}
+                <textarea onKeyUp={onAddPostKey} onChange={onChangePost}
                           value={props.newTextData}
                           placeholder='Create some post.'/>
             </div>

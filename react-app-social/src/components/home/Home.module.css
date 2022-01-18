@@ -4,7 +4,12 @@
     padding: 20px;
     border-radius: 10px;
     background-color: white;
-    margin-top: 10vh;
+    margin-top: 6vh;
+}
+@media all and (max-width: 1024px){
+    .container {
+        max-width: 66vw;
+    }
 }
 
 .slider {
