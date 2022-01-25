@@ -18,22 +18,30 @@ const MyProfileContainer = () => {
     if (!userId) {
         userId = userAuthId
     }
-    
+
     useEffect(() => {
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`,
-            {withCredentials: true})
+            {
+                withCredentials: true,
+                headers: {"API-KEY": "5e2660ad-73f8-48d3-afc2-fe97afae535d"}
+            })
             .then(response => {
                 dispatch(setUserProfile(response.data))
             })
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/status/${userId}`,
-            {withCredentials: true})
+            {
+                withCredentials: true,
+                headers: {"API-KEY": "5e2660ad-73f8-48d3-afc2-fe97afae535d"}
+            })
             .then(response => {
                 dispatch(setUserStatus(response.data))
             })
         axios.put('https://social-network.samuraijs.com/api/1.0/profile/status',
             {status: `${valueBtnStatus}`},
-            {withCredentials: true,
-            headers: {"API-KEY": "2acfc1b3-60e7-4085-9e02-9cf6596045ef"}})
+            {
+                withCredentials: true,
+                headers: {"API-KEY": "5e2660ad-73f8-48d3-afc2-fe97afae535d"}
+            })
             .then(response => {
                 if (response.data.resultCode === 0 && userAuthId === userId) {
                     dispatch(setUserStatus(valueBtnStatus))

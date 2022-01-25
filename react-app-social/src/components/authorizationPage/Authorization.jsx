@@ -59,19 +59,26 @@ const Authorization = () => {
         }
         axios.post('https://social-network.samuraijs.com/api/1.0/auth/login',
             formData,
-            {withCredentials: true,
-            headers: {"API-KEY": "2acfc1b3-60e7-4085-9e02-9cf6596045ef"}})
+            {
+                withCredentials: true,
+                headers: {"API-KEY": "5e2660ad-73f8-48d3-afc2-fe97afae535d"}
+            })
             .then((response) => {
                 dispatch(setAuthorizationData(response.data))
                 if (response.data.resultCode === 1) {
                     setError('Incorrect Email or Password')
-                } else {return  setError('')}
+                } else {
+                    return setError('')
+                }
             })
     }
 
     useEffect(() => {
         axios.get('https://social-network.samuraijs.com/api/1.0/auth/me',
-            {withCredentials: true})
+            {
+                withCredentials: true,
+                headers: {"API-KEY": "5e2660ad-73f8-48d3-afc2-fe97afae535d"}
+            })
             .then(response => {
                 if (authData.data.userId === response.data.data.id) {
                     dispatch(setAuthorizationUser(response.data))
@@ -81,42 +88,42 @@ const Authorization = () => {
     }, [authData, dispatch])
 
     if (authData.resultCode === null)
-    return (
-        <div id={'login'} className={styles.authorPageContent}>
-            <div className={styles.authContainer}>
-                <h3>Sign In</h3>
-                {(error) && <div style={{color: 'red'}}>{error}</div>}
-                <form onSubmit={submitForm}>
-                    {(emailError) && <div style={{color: 'red'}}>{emailError}</div>}
-                    <div className={styles.authItemForm}>
-                        <input onChange={(event) => emailChange(event)} className={styles.InputItem}
-                               value={email}
-                               name={'email'}
-                               type="text"
-                               placeholder={'Email'}/>
-                    </div>
+        return (
+            <div id={'login'} className={styles.authorPageContent}>
+                <div className={styles.authContainer}>
+                    <h3>Sign In</h3>
+                    {(error) && <div style={{color: 'red'}}>{error}</div>}
+                    <form onSubmit={submitForm}>
+                        {(emailError) && <div style={{color: 'red'}}>{emailError}</div>}
+                        <div className={styles.authItemForm}>
+                            <input onChange={(event) => emailChange(event)} className={styles.InputItem}
+                                   value={email}
+                                   name={'email'}
+                                   type="text"
+                                   placeholder={'Email'}/>
+                        </div>
 
-                    {(passwordError) && <div style={{color: 'red'}}>{passwordError}</div>}
-                    <div className={styles.authItemForm}>
-                        <input onChange={(e) => passwordChange(e)} className={styles.InputItem}
-                               value={password}
-                               name={'password'}
-                               type="password"
-                               placeholder={'Password'}/>
-                    </div>
-                    <div className={styles.authItemForm}>
-                        <input onChange={(e) => savePasswordChange(e)}
-                               className={styles.checkItem} name={'rememberMe'}
-                               type="checkbox" id='9176' checked={savePassword}/>
-                        <label form="9176">Remember Password</label>
-                    </div>
-                    <div className={styles.authItemForm}>
-                        <input className={styles.submitItem} type="submit" value={'Sign in'}/>
-                    </div>
-                </form>
+                        {(passwordError) && <div style={{color: 'red'}}>{passwordError}</div>}
+                        <div className={styles.authItemForm}>
+                            <input onChange={(e) => passwordChange(e)} className={styles.InputItem}
+                                   value={password}
+                                   name={'password'}
+                                   type="password"
+                                   placeholder={'Password'}/>
+                        </div>
+                        <div className={styles.authItemForm}>
+                            <input onChange={(e) => savePasswordChange(e)}
+                                   className={styles.checkItem} name={'rememberMe'}
+                                   type="checkbox" id='9176' checked={savePassword}/>
+                            <label form="9176">Remember Password</label>
+                        </div>
+                        <div className={styles.authItemForm}>
+                            <input className={styles.submitItem} type="submit" value={'Sign in'}/>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-    )
+        )
     if (authData.resultCode === 0)
         return <></>
 };

@@ -15,7 +15,10 @@ const FindUsersContainer = () => {
         dispatch(toggleIsFetching(true));
         dispatch(setCurrentPage(pageNumber));
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${usersData.pageSize}&page=${pageNumber}`,
-            {withCredentials: true})
+            {
+                withCredentials: true,
+                headers: {"API-KEY": "5e2660ad-73f8-48d3-afc2-fe97afae535d"}
+            })
             .then(response => {
                 dispatch(toggleIsFetching(false));
                 dispatch(setUsers(response.data.items));
@@ -30,7 +33,10 @@ const FindUsersContainer = () => {
     useEffect(() => {
         dispatch(toggleIsFetching(true));
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${usersData.pageSize}&page=${usersData.currentPage}`,
-            {withCredentials: true})
+            {
+                withCredentials: true,
+                headers: {"API-KEY": "5e2660ad-73f8-48d3-afc2-fe97afae535d"}
+            })
             .then(response => {
                 dispatch(setTotalCount(response.data.totalCount));
                 dispatch(toggleIsFetching(false));
@@ -54,8 +60,8 @@ const FindUsersContainer = () => {
                     return (<span onClick={() =>
                         onChangePage(page)
                     }
-                      key={index}
-                      className={usersData.currentPage === page ? styles.pageActive : styles.page}>{page}</span>)
+                                  key={index}
+                                  className={usersData.currentPage === page ? styles.pageActive : styles.page}>{page}</span>)
                 })}
             </div>
         </div>
