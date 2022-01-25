@@ -19,7 +19,7 @@ const UserCard = (props) => {
             {},
             {
                 withCredentials: true,
-                headers: {"API-KEY": "2acfc1b3-60e7-4085-9e02-9cf6596045ef"}})
+                headers: {"API-KEY": "5e2660ad-73f8-48d3-afc2-fe97afae535d"}})
             .then(response => {
                 if (response.data.resultCode === 0) {
                     dispatch(addUser(userId));
@@ -30,7 +30,8 @@ const UserCard = (props) => {
         axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`,
             {
                 withCredentials: true,
-                headers: {"API-KEY": "5e2660ad-73f8-48d3-afc2-fe97afae535d"}})
+                headers: {"API-KEY": "5e2660ad-73f8-48d3-afc2-fe97afae535d"}
+            })
             .then(response => {
                 if (response.data.resultCode === 0) {
                     dispatch(cancelActionUser(userId));
