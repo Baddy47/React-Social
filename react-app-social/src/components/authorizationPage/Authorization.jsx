@@ -8,7 +8,7 @@ import styles from './Authorization.module.css';
 const Authorization = () => {
 
     const dispatch = useDispatch();
-    const authData = useSelector(state => state.authorization);
+    let authData = useSelector(state => state.authorization);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
